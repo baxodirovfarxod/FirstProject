@@ -1,0 +1,137 @@
+1. 1 ta son berilgan. Berilgan sonni necha xonali
+eknaligini aniqlang.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var counter = 0;
+            while (number > 0)
+            {
+                counter++;
+                number /= 10;
+            }
+            Console.WriteLine(counter);
+        }
+    }
+}
+
+2. 1 ta son berilgan. Berilgan sonda juft raqamlar
+miqdorini aniqlang.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var counter = 0;
+            while (number > 0)
+            {
+                if ((number % 10) % 2 == 0)
+                {
+                    counter++;
+                }
+                number /= 10;
+            }
+            Console.WriteLine(counter);
+        }
+    }
+}
+
+3. Foydalanuvchi tomonidan sonlar kiritilaveradi. Bu jarayon 0 kiritilguncha davom etadi. Shu kiritilgan sonlarning miqdorini toping. Miqorda 0 raqami hisobga olinmasin.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var counter = 0;
+            while (number != 0)
+            {
+                counter++;
+                number = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine(counter);
+        }
+    }
+}
+
+4. Foydalanuvchi tomonidan sonlar kiritilaveradi. Bu jarayon 0 kiritilguncha davom etadi. Shu kiritilgan sonlarning 50 dan kattalarini yig'indisini toping. 
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var result = 0;
+            while (number != 0)
+            {
+                if(number > 50)
+                {
+                    result += number;
+                }
+                number = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine(result);
+        }
+    }
+}
+
+5. 1 ta butun son berilgan. Berilgan son raqamlari orasida 5 raqami bor 
+yo’qligini aniqlovchi programma tuzilsin.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var result = false;
+            while (number > 0)
+            {
+                if (number % 10 == 5)
+                {
+                    result = true;
+                    break;
+                }
+                number /= 10;
+            }
+            Console.WriteLine(result);
+        }
+    }
+}
+
+6.  n butun soni berilgan (n > 0). Agar n soni 3 ning darajasi bo'lsa  
+"3 ning darajasi", aks xolda “3 ning darajasi emas” degan natija 
+chiqarwchi dastur tuzing. 
+ESLATMA: Qoldiqli bo'lish va bo'lish amallarini ishlatmang.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var result = false;
+            for (var i = 3; i <= number; i *= 3)
+            {
+                if (i == number)
+                {
+                    result = true;
+                }
+            }
+            Console.WriteLine("Son 3 ning darajasimi: " + result);
+        }
+    }
+}
