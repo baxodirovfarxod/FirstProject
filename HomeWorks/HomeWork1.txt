@@ -1,0 +1,521 @@
+11. int type da 1 ta 4 xonali son berilgan. Shu sonni birlar va o'nlar xonasidagi raqamlarni o'zaro almashtirib ekranga chiqaring.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var units = number % 10;
+            var tens = number % 100 / 10;
+            number = (number / 100) * 100 + units * 10 + tens;
+            Console.WriteLine($"Natija: {number}");
+        }
+    }
+}
+
+12. int type da 1 ta 3 xonali son berilgan. Shu sonni yuzlar va o'nlar xonasidagi raqamlarni o'zaro almashtirib ekranga chiqaring.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var hundredsPlace = number / 100 % 10;
+            var tensPlace = number / 10 % 10;
+            number = tensPlace * 100 + hundredsPlace * 10 + number % 10; 
+            Console.WriteLine($"Natija: {number}");
+        }
+    }
+}
+
+13. int type da 1 ta 4 xonali son berilgan. Shu sonni minglar va o'nlar xonasidagi raqamlarni o'zaro almashtirib ekranga chiqaring.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var units = number % 10;                
+            var tens = number / 10 % 10;          
+            var hundreds = number / 100 % 10;      
+            var thousands = number / 1000 % 10;
+            number = tens * 1000 + hundreds * 100 + thousands * 10 + units;
+            Console.WriteLine($"Natija: {number}");
+        }
+    }
+}
+
+14. int type da gb berilgan. GB ni MB ga o'tkazib ekranga chiqaruvchi dastur tuzing. 
+15. int type da gb berilgan. Gb ni Bit ga o'tkazib ekranga chiqaruvchi dastur tuzing. 
+16. int type da gb berilgan. GB ni TB ga o'tkazib ekranga chiqaruvchi dastur tuzing.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var gb = Convert.ToInt32(Console.ReadLine());
+            var bit = (long)gb * 1024 * 1024 * 1024 * 8;
+            var mb = gb * 1024;
+            var tb = (double)gb / 1024;
+            Console.WriteLine($"{gb} gb = {bit} bit");
+            Console.WriteLine($"{gb} gb = {mb} mb");
+            Console.WriteLine($"{gb} gb = {tb} tb");
+        }
+    }
+}
+
+17. int type da gb li fleshka berilgan. Shu fleshkaga 2 gb li kinodan nechta siqishini aniqlab
+beruvchi dastur tuzing.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var gb = Convert.ToInt32(Console.ReadLine());
+            var result = gb / 2;
+            Console.WriteLine($"Natija {result}");
+        }
+    }
+}
+
+2. int type da son berilgan. Faqat ko'paytirish amali orqali sonni 6 chi darajasini aniqlab ekranga chiqaring. 
+(Eslatma: ko'paytish amalini faqat 3 marta ishlatish mumkin)
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var numberCube = number * number * number;
+            var sixthPower = numberCube * numberCube;
+            Console.WriteLine($"Natija: {sixthPower}");
+        }
+    }
+}
+
+3. int type da son berilgan. Faqat ko'paytirish amali orqali sonni 8 chi darajasini aniqlab ekranga chiqaring. 
+(Eslatma: ko'paytish amalini faqat 3 marta ishlatish mumkin)
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var square = number * number;
+            var fourthPower = square * square;
+            var eighthPower = fourthPower * fourthPower;
+            Console.WriteLine($"Natija: {eighthPower}");
+        }
+    }
+}
+
+1. Rostlikga tekshiring 1 ta natural son berilgan. Berilgan son juft.
+2. Rostlikga tekshiring 1 ta natural son berilgan. Berilgan son toq
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var isEven = number % 2 == 0;
+            if (isEven == true)
+            {
+                Console.WriteLine($"{number} bu juft son !");
+            }
+            else
+            {
+                Console.WriteLine($"{number} bu toq son !");
+            }
+        }
+    }
+}
+
+3. Rostlikga tekshiring 1 ta natural son berilgan. Berilgan son 2 xonali
+4. Rostlikga tekshiring 1 ta natural son berilgan. Berilgan son 4 xonali
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var isTwoDigit = number > 9 && number < 100;
+            Console.WriteLine($"Berilgan son 2 xonalimi: {isTwoDigit}");
+            number = Convert.ToInt32(Console.ReadLine());
+            var isFourDigit = number > 999 && number < 10000;
+            Console.WriteLine($"Berilgan son 4 xonalimi: {isFourDigit}");
+        }
+    }
+}
+
+5. Rostlikga tekshiring 1 ta natural son berilgan. Berilgan son juft va 2 xonali
+6. Rostlikga tekshiring 1 ta natural son berilgan. Berilgan son toq va 3 xonali
+7. Rostlikga tekshiring 1 ta natural son berilgan. Berilgan son juft va 4 xonali
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var isEvenTwoDigit = number % 2 == 0 && number > 9 && number < 100;
+            Console.WriteLine($"Berilgan son juft va 2 xonalimi: {isEvenTwoDigit}");
+            number = Convert.ToInt32(Console.ReadLine());
+            var isOddThreeDigit = number % 2 != 0 && number > 99 && number < 1000;
+            Console.WriteLine($"Berilgan son toq va 3 xonalimi: {isOddThreeDigit}");
+            number = Convert.ToInt32(Console.ReadLine());
+            var isEvenFourDigit = number % 2 == 0 && number > 999 && number < 10000;
+            Console.WriteLine($"Berilgan son juft va 4 xonalimi: {isEvenFourDigit}");
+        }
+    }
+}
+
+8. Rostlikga tekshiring 2 ta natural son berilgan. 2 lasi ham toq
+9. Rostlikga tekshiring 2 ta natural son berilgan. 2 lasi ham juft.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var firstNumber = Convert.ToInt32(Console.ReadLine());
+            var secondNumber = Convert.ToInt32(Console.ReadLine());
+            var areBothOdd = firstNumber % 2 != 0 && secondNumber % 2 != 0;
+            Console.WriteLine($"2 lasi ham toqmi: {areBothOdd}");
+            var areBothEven = firstNumber % 2 == 0 && secondNumber % 2 == 0;
+            Console.WriteLine($"2 lasi ham juftmi: {areBothOdd}");
+        }
+    }
+}
+
+10. Rostlikga tekshiring 2 ta natural son berilgan. 2 lasi ham toq va 2 xonali.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var firstNumber = Convert.ToInt32(Console.ReadLine());
+            var secondNumber = Convert.ToInt32(Console.ReadLine());
+            var areBothOdd = firstNumber % 2 != 0 && secondNumber % 2 != 0;
+            var areBothTwoDigit = firstNumber > 9 && firstNumber < 100 && secondNumber > 9 && secondNumber < 100;
+            if (areBothOdd == true && areBothTwoDigit == true)
+            {
+                Console.WriteLine("2 lasi ham toq va 2 xonali");
+            }
+            else
+            {
+                Console.WriteLine("2 lasi ham toq va 2 xonali emas");
+            }
+        }
+    }
+}
+
+
+11. Rostlikga tekshiring 1 ta 2 xonali natural son berilgan. 
+Berilgan son raqamlari teng.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var areDigitsEqual = number % 10 == number / 10 % 10;
+            if (areDigitsEqual == true)
+            {
+                Console.WriteLine($"{number} son raqamlari teng !");
+            }
+            else
+            {
+                Console.WriteLine($"{number} son raqamlari teng emas !");
+            }
+        }
+    }
+}
+
+12. Rostlikga tekshiring 1 ta 2 xonali son berilgan. 
+Sonni raqamlari yig‘indis 10 dan katta.
+13. Rostlikga tekshiring 1 ta 2 xonali son berilgan. 
+Sonni raqamlari ko‘paytmasi 20 dan katta
+14. Rostlikga tekshiring 1 ta 2 xonali son berilgan. 
+Sonni raqamlarini 2 lasi ham toq.
+15. Rostlikga tekshiring 1 ta 2 xonali son berilgan. 
+Sonni raqamlarini 2 lasi ham 5 dan katta.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var units = number % 10;
+            var tens = number / 10 % 10;
+            var SumOfDigits = (units + tens) > 10;
+            Console.WriteLine($"Sonning raqamlar yig'indisi 10 dan katta: {SumOfDigits}");
+            var multiplicationDigits = (units * tens) > 20;
+            Console.WriteLine($"Sonning raqamlar ko'paytmasi 20 dan katta: {multiplicationDigits}");
+            var bothOdd = units % 2 != 0 && tens % 2 != 0;
+            Console.WriteLine($"Sonning raqamlari toq: {bothOdd}");
+            var bothGreater = units > 5 && tens > 5;
+            Console.WriteLine($"Sonning raqamlari 5 dan katta: {bothGreater}");
+        }
+    }
+}
+
+16. Rostlikga tekshiring a sonni berilgan. 
+a sonini 3 ga karrali.
+17. Rostlikga tekshiring a sonni berilgan. 
+a sonini 7 ga karrali.
+18. Rostlikga tekshiring a sonni berilgan. 
+a sonini 3 ga va 8 ga karrali.
+19. Rostlikga tekshiring a sonni berilgan. 
+a sonini 7 ga yoki 9 karrali.
+20. Rostlikga tekshiring a sonni berilgan. 
+a sonini 3 ga karrali.
+21. Rostlikga tekshiring a sonni berilgan. 
+a sonini 5 ga bo'linmaydi.
+22. Rostlikga tekshiring a sonni berilgan. 
+a sonini 4 ga bo'linib 3 ga bo'linmaydi 
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var multipleOfThree = number % 3 == 0;
+            Console.WriteLine($"Son 3 ga karrali: {multipleOfThree}");
+            var multipleOfSeven = number % 7 == 0;
+            Console.WriteLine($"Son 7 ga karrali: {multipleOfSeven}");
+            var isDiv = number % 3 == 0 && number % 8 == 0;
+            Console.WriteLine($"Son 3 ga va 8 ga karralimi: {isDiv}");
+            isDiv = number % 7 == 0 && number % 9 == 0;
+            Console.WriteLine($"Son 7 ga va 9 ga karralimi: {isDiv}");
+            var notDiv = number % 5 != 0;
+            Console.WriteLine($"Son 5 ga bo'linmaydi: {notDiv}");
+            var isDivBy4NotBy3 = number % 4 == 0 && number % 3 != 0;
+            Console.WriteLine($"Son 4 ga bo'linib 3 ga bo'linmaydi: {isDivBy4NotBy3}");
+        }
+    }
+}
+
+23. Rostlikga tekshiring a va b sonlari berilgan. 
+a sonini b sonidan katta.
+24. Rostlikga tekshiring a va b sonlari berilgan. 
+a sonini b soniga teng.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var firstNumber = Convert.ToInt32(Console.ReadLine());
+            var secondNumber = Convert.ToInt32(Console.ReadLine());
+            var aGreaterThanb = firstNumber > secondNumber;
+            Console.WriteLine($"a soni b sonidan katta: {aGreaterThanb}");
+            var isEqual = firstNumber == secondNumber;
+            Console.WriteLine($"a soni b soniga teng: {isEqual}");
+        }
+    }
+}
+
+25. Rostlikga tekshiring a, b va c sonlari berilgan. 
+Eng kattasi a.
+26. Rostlikga tekshiring a, b va c sonlari berilgan. 
+Eng kattasi c.
+27. Rostlikga tekshiring a, b va c sonlari berilgan. 
+Eng kichigi b.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("a: ");
+            var firstNumber = Convert.ToInt32(Console.ReadLine());
+            Console.Write("b: ");
+            var secondNumber = Convert.ToInt32(Console.ReadLine());
+            Console.Write("c: ");
+            var thirdNumber = Convert.ToInt32(Console.ReadLine());
+            var isMaxA = firstNumber > secondNumber && firstNumber > thirdNumber;
+            Console.WriteLine($"A eng kattasi: {isMaxA}");
+            var isMaxC = thirdNumber > firstNumber && thirdNumber > secondNumber;
+            Console.WriteLine($"C eng kattasi: {isMaxC}");
+            var isMinB = secondNumber < firstNumber && secondNumber < thirdNumber;
+            Console.WriteLine($"B eng kichigi: {isMinB}");
+        }
+    }
+}
+
+28. Rostlikga tekshiring a va b sonlari berilgan. 
+a sonini b sonidan 2 barobar katta.
+29. Rostlikga tekshiring a va b sonlari berilgan. 
+b sonini a sonidan 5 barobar katta.
+30. Rostlikga tekshiring a va b sonlari berilgan. 
+ixtiyoriy bittasi 2 chisidan 4 barobar katta
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("a: ");
+            var firstNumber = Convert.ToInt32(Console.ReadLine());
+            Console.Write("b: ");
+            var secondNumber = Convert.ToInt32(Console.ReadLine());
+            var isDouble = firstNumber / 2 == secondNumber;
+            Console.WriteLine($"a soni b sonidan 2 marta katta: {isDouble}");
+            var bGreater = secondNumber / firstNumber == 5;
+            Console.WriteLine($"b soni a sonidan 5 martaga katta: {bGreater}");
+            var greaterByFour = firstNumber / secondNumber == 4 || secondNumber / firstNumber == 4;
+            Console.WriteLine($"Ixtiyoriy bittasi 2-sidan 4 marta ko'p: {greaterByFour}");
+        }
+    }
+}
+
+10.  2 ta son berilgan. Katta soni ekranga chiqarib beruvchi dastur tuzing.
+11.  2 ta son berilgan. Kichik soni ekranga chiqarib beruvchi dastur tuzing.
+12.  2 ta son berilgan. Agar 2 lasi ham 2 xonali bo'lsa yig'indisini, aks holda ko'paytmasini aniqlab ekranga chiqaruvchi dastur tuzing.
+13. 2 ta son berilgan. Agar 2 lasi ham juft bo'lsa yig'indisini, aks holda ko'paytmasini aniqlab ekranga chiqaruvchi dastur tuzing.
+14. 2 ta son berilgan. Agar 2 lasi ham toq bo'lsa ko'paytmasini, aks holda berilgan sonlarni ekranga chiqaruvchi dastur tuzing.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("a: ");
+            var firstNumber = Convert.ToInt32(Console.ReadLine());
+            Console.Write("b: ");
+            var secondNumber = Convert.ToInt32(Console.ReadLine());
+
+            /// 10 va 11
+            Console.WriteLine("Katta son: " + Math.Max(firstNumber, secondNumber));
+            Console.WriteLine("Kichik son: " + Math.Min(firstNumber, secondNumber));
+            /// 12
+            if (firstNumber > 9 && firstNumber < 100 && secondNumber > 9 && secondNumber < 100)
+            {
+                Console.WriteLine("Natija: " + firstNumber + secondNumber);
+            }
+            else
+            {
+                Console.WriteLine("Natija: " + firstNumber * secondNumber);
+            }
+            /// 13
+            if (firstNumber % 2 == 0 && secondNumber % 2 == 0)
+            {
+                Console.WriteLine("Natija: " + firstNumber + secondNumber);
+            }
+            else
+            {
+                Console.WriteLine("Natija: " + firstNumber * secondNumber);
+            }
+            /// 14
+            if (firstNumber % 2 != 0 && secondNumber % 2 != 0)
+            {
+                Console.WriteLine("Natija: " + firstNumber * secondNumber);
+            }
+            else
+            {
+                Console.WriteLine("Sonlar: " + firstNumber + " " + secondNumber);
+            }
+        }
+    }
+}
+
+15. 3 ta son berilgan. Shu sonlar ichida nechta toq son borligini aniqlovchi dastur tuzing.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = 0;
+            var counter = 0;
+            for (var i = 0; i < 3; i++)
+            {
+                number = Convert.ToInt32(Console.ReadLine());
+                if (number % 2 != 0)
+                {
+                    counter++;
+                }
+            }
+            Console.WriteLine($"Toq sonlar {counter} ta");
+        }
+    }
+}
+
+16. 1 ta 4 xonali son berilgan. Shu son tarkibidagi juft raqamlar miqdorini aniqlang.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            var counter = 0;
+            while (number > 0)
+            {
+                if ((number % 10) % 2 == 0)
+                {
+                    counter++;
+                }
+                number /= 10;
+            }
+            Console.WriteLine($"Sonning juft raqamlari {counter} ta");
+        }
+    }
+}
+
+17. 5 ta son berilgan. Shu sonlar ichida nechta juft son borligini aniqlovchi dastur tuzing.
+
+namespace MyFirstProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = 0;
+            var counter = 0;
+            for (var i = 0; i < 5; i++)
+            {
+                number = Convert.ToInt32(Console.ReadLine());
+                if (number % 2 == 0)
+                {
+                    counter++;
+                }
+            }
+            Console.WriteLine($"Juft sonlar {counter} ta");
+        }
+    }
+}
