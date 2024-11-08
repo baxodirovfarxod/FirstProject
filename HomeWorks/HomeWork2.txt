@@ -9,6 +9,10 @@ namespace MyFirstProgram
         {
             var number = Convert.ToInt32(Console.ReadLine());
             var counter = 0;
+            if (number < 0)
+            {
+                number *= -1;
+            }
             while (number > 0)
             {
                 counter++;
@@ -97,6 +101,10 @@ namespace MyFirstProgram
         {
             var number = Convert.ToInt32(Console.ReadLine());
             var result = false;
+            if (number < 0)
+            {
+                number *= -1;
+            }
             while (number > 0)
             {
                 if (number % 10 == 5)
