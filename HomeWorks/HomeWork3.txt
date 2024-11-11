@@ -669,31 +669,141 @@ internal class Program
 
 4.	Satr berilgan. agar shu satr “xyz” so’zini o’z ichiga olsa, true qaytaring, lekin nuqta(.) belgisi davomidan “xyz” uchrasa hisobga olinmasin.
 
-xyzThere("abcxyz") → true
-xyzThere("abc.xyz") → false
-xyzThere("xyz.abc") → true
-xyzThere("abc.xyzxyz") → true
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var text = Console.ReadLine();
+        var result = xyzThere(text);
+        Console.WriteLine(result);
+    }
+    public static bool xyzThere(string text)
+    {
+        try
+        {
+            if (text.Contains("xyz") is true && text[text.IndexOf("xyz") - 1] != '.')
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (IndexOutOfRangeException)
+        {
+            return true;
+        }
+    }
+}
 
 5.	mixString
 2ta a va b satr berilgan. a satrni 1-harf, b-satrni 1-harfi, a satrni 2-harfi, b satrni 2-harfi, …. Shu ketma ketlik boyicha harflardan iborat yangi satrni qaytaring. Oxirida a yoki b satrda qolib ketgan harflar hammasi yangi satrga qoshib yuboriladi.
 
-mixString("abc", "xyz") → "axbycz"
-mixString("Hi", "There") → "HTihere"
-mixString("xxxx", "There") → "xTxhxexre"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var firstText = Console.ReadLine();
+        Console.Write("Enter: ");
+        var secondText = Console.ReadLine();
+        var result = MixString(firstText, secondText);
+        Console.WriteLine(result);
+    }
+    public static string MixString(string firstText, string secondText)
+    {
+        try
+        {
+            var result = "";
+            var shorterLength = Math.Min(firstText.Length, secondText.Length);
+            Console.WriteLine(shorterLength);
+            var i = 0;
+            for (i = 0; i < shorterLength; i++)
+            {
+                result += firstText[i];
+                result += secondText[i];
+            }
+            result += firstText.Substring(i);
+            result += secondText.Substring(i);
+            return result;
+        }
+        catch (Exception e)
+        {
+            return e.Message;
+        }
+    }
+}
 
 6.	 repeatEnd
 Satr va n soni berilgan. Shu satrni oxirgi n ta harfini n marta yonmayon qoyib, yangi satrni qaytaring.
 
-repeatEnd("Hello", 3) → "llollollo"
-repeatEnd("Hello", 2) → "lolo"
-repeatEnd("Hello", 1) → "o"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var text = Console.ReadLine();
+        Console.Write("Enter: ");
+        var number = int.Parse(Console.ReadLine());
+        var result = RepeatEnd(text, number);
+        Console.WriteLine(result);
+    }
+    public static string RepeatEnd(string text, int number)
+    {
+        try
+        {
+            var result = "";
+            for (var i = 0; i < number; i++)
+            {
+                result += text.Substring(text.Length - number);
+            }
+            return result;
+        }
+        catch (Exception e)
+        {
+            return e.Message;
+        }
+    }
+}
 
 7.	repeatFront
 Str satri va n soni berilgan. str satrini birinchi n ta belgisini davomidan str satrini birinchi n-1 ta belgisini va yana davomidan str satrini n-2 ta belgisini … joylashtiring. Hosil bolgan yangi satrni qaytaring.
 
-repeatFront("Chocolate", 4) → "ChocChoChC"
-repeatFront("Chocolate", 3) → "ChoChC"
-repeatFront("Ice Cream", 2) → "IcI"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var text = Console.ReadLine();
+        Console.Write("Enter: ");
+        var number = int.Parse(Console.ReadLine());
+        var result = RepeatFront(text, number);
+        Console.WriteLine(result);
+    }
+    public static string RepeatFront(string text, int number)
+    {
+        try
+        {
+            var result = "";
+            for (var i = number; i >= 0; i--)
+            {
+                result += text.Substring(text.Length - i);
+            }
+            return result;
+        }
+        catch (Exception e)
+        {
+            return e.Message;
+        }
+    }
+}
 
 8.	repeatSeparator
 2ta word va sep nomli satrlar va n soni berilgan. n ta wordni birin ketin joylashtiring va orasiga sep satrlarni qoying. Hosil bolgan satrni qaytaring.
