@@ -808,38 +808,166 @@ internal class Program
 8.	repeatSeparator
 2ta word va sep nomli satrlar va n soni berilgan. n ta wordni birin ketin joylashtiring va orasiga sep satrlarni qoying. Hosil bolgan satrni qaytaring.
 
-repeatSeparator("Word", "X", 3) → "WordXWordXWord"
-repeatSeparator("This", "And", 2) → "ThisAndThis"
-repeatSeparator("This", "And", 1) → "This"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var firstText = Console.ReadLine();
+        Console.Write("Enter: ");
+        var secondText = Console.ReadLine();
+        Console.Write("Enter: ");
+        var number = int.Parse(Console.ReadLine());
+        var result = RepeatSeparator(firstText, secondText ,number);
+        Console.WriteLine(result);
+    }
+    public static string RepeatSeparator(string firstText, string secondText ,int number)
+    {
+        try
+        {
+            var result = "";
+            for (var i = 0; i < number; i++)
+            {
+                result += firstText + secondText;
+            }
+            if (result.EndsWith(secondText) is true)
+            {
+                result = result.Remove(result.Length - secondText.Length);
+            }
+            return result;
+        }
+        catch (Exception e)
+        {
+            return e.Message;
+        }
+    }
+}
 
 9.	prefixAgain
 Satr va n soni berilgan. agar satrni birinchi n ta harfidan iborat so’z satrni boshqa qismida ham uchrasa, true qaytaring, aks holda false.
 
-prefixAgain("abXYabc", 1) → true
-prefixAgain("abXYabc", 2) → true
-prefixAgain("abXYabc", 3) → false
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var text = Console.ReadLine();
+        Console.Write("Enter: ");
+        var number = int.Parse(Console.ReadLine());
+        var result = PrefixAgain(text, number);
+        Console.WriteLine(result);
+    }
+    public static bool PrefixAgain(string text, int number)
+    {
+        try
+        {
+            var stringValue = text.Substring(0, number);
+            text = text.Remove(0, number);
+            return text.Contains(stringValue);
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+}
 
 10.	xyzMiddle
 Satr berilgan. Shu satrni o’rtasida “xyz” turgan bo’lsa true qaytaring. Bunda “xyz” ni chap tomonidagi va o’ng tomonidagi belgilar soni ko’pi bilan 1taga farq qilsa ham satrni o’rtasida turibti deb hisoblansin.
 
-xyzMiddle("AAxyzBB") → true
-xyzMiddle("AxyzBB") → true
-xyzMiddle("AxyzBBB") → false
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var text = Console.ReadLine();
+        var result = xyzMiddle(text);
+        Console.WriteLine(result);
+    }
+    public static bool xyzMiddle(string text)
+    {
+        try
+        {
+            var rigt = (text.Substring(0, text.IndexOf("xyz"))).Length;
+            var left = (text.Substring(text.IndexOf("xyz") + 3)).Length;
+            if (rigt == left || Math.Abs(rigt - left) == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+}
+
 
 11.	 getSandwich
 Sandwich bu 2ta nonni orasiga solingan masalliqlar iborat ovqat.
 Satr berilgan. Satrda birinchi uchraydigan va oxirgi uchraydigan “bread” so’zini orasidagi satrni qaytaring. Agar satrda 2ta “bread” bo’lmasa bosh string qaytaring.
 
-getSandwich("breadjambread") → "jam"
-getSandwich("xxbreadjambreadyy") → "jam"
-getSandwich("xxbreadyy") → ""
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var text = Console.ReadLine();
+        var result = GetSandwichContent(text);
+        Console.WriteLine(result);
+    }
+    public static string GetSandwich(string text)
+    {
+        var firstBreadIndex = text.IndexOf("bread");
+        var lastBreadIndex = text.LastIndexOf("bread");
+
+        if (firstBreadIndex != -1 && lastBreadIndex != -1 && firstBreadIndex != lastBreadIndex)
+        {
+            var start = firstBreadIndex + 5;
+            return text.Substring(start, lastBreadIndex - start);
+        }
+        return ""; 
+    }
+}
 
 12.	sameStarChar
 Satr berilgan. Satrda har 1ta uchragan ‘*’ belgisidan 1ta oldingi va 1ta keyingi belgilar teng bo’lsa, true qaytaring. Agar ‘*’dan 1ta oldin yoki 1ta keyin belgi bolmasa e’tibor qilmang.
 
-sameStarChar("xy*yzz") → true
-sameStarChar("xy*zzz") → false
-sameStarChar("*xa*az") → true
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter: ");
+        var text = Console.ReadLine();
+        var result = SameStarChar(text);
+        Console.WriteLine(result);
+    }
+    public static bool SameStarChar(string text)
+    {
+        for (var i = 1; i < text.Length - 1; i++)  
+        {
+            if (text[i] == '*')
+            {
+                if (text[i - 1] == text[i + 1])
+                {
+                    return true;  
+                }
+            }
+        }
+        return false;  
+    }
+}
 
 13.	zipZap
 Satr berilgan. Satrda z va p harflarini orasida 1tagina belgi bo’lsa uni tuhshirib qoldiring, va yangi satrni qaytaring.
