@@ -972,46 +972,204 @@ internal class Program
 13.	zipZap
 Satr berilgan. Satrda z va p harflarini orasida 1tagina belgi bo’lsa uni tuhshirib qoldiring, va yangi satrni qaytaring.
 
-zipZap("zipXzap") → "zpXzp"
-zipZap("zopzop") → "zpzp"
-zipZap("zzzopzop") → "zzzpzp"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = ZipZap(text);
+        Console.WriteLine($"Result: {result}");
+    }
+
+    public static string ZipZap(string text)
+    {
+        var result = string.Empty;
+        for (var i = 0; i < text.Length - 1; i++)
+        {
+            if (i != 0 && text[i-1] == 'z' && text[i+1] == 'p')
+            {
+                i++;
+            }
+            result += text[i];
+        }
+
+        return result;
+    }
+}
+
 
 14.	plusOut
 2ta str va word nomli satrlar berilgan. str satrida barcha uchraydigan word lardan tashqari qolgan belgilarni ‘+’ belgisi bilan almashtiring.
 
-plusOut("12xy34", "xy") → "++xy++"
-plusOut("12xy34", "1") → "1+++++"
-plusOut("12xy34xyabcxy", "xy") → "++xy++xy+++xy"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var firstText = Console.ReadLine();
+        var secondText = Console.ReadLine();
+        var result = ZipZap(firstText, secondText);
+        Console.WriteLine($"Result: {result}");
+    }
+
+    public static string ZipZap(string firstText, string secondText)
+    {
+        var result = string.Empty;
+        for (var i = 0; i < firstText.Length - 1; i++)
+        {
+            if (firstText.Substring(i, secondText.Length) == secondText)
+            {
+                result += secondText;
+            }
+            result += "+";
+        }
+
+        return result;
+    }
+}
+
 
 15.	wordEnds
 2ta str va word nomli satrlar berilgan. str da uchraydigan baarcha word larni 1ta oldin va 1ta keyingi belgilarini ketmaket qoyib yangi string hosil qiling va natijani qaytaring. word’dan oldin yoki keyin belgi bolmasa etibor qilmang. 1ta belgi 2marta hisobga olingan holatlar ham bolishi mumkin.
 
-wordEnds("abcXY123XYijk", "XY") → "c13i"
-wordEnds("XY123XY", "XY") → "13"
-wordEnds("XY1XY", "XY") → "11"
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.WriteLine(WordEnds("abcXY123XYijk", "XY"));
+        Console.WriteLine(WordEnds("XY123XY", "XY"));
+        Console.WriteLine(WordEnds("XY1XY", "XY"));
+        Console.WriteLine(WordEnds("1salom1hello1", "1"));
+
+    }
+
+    public static string WordEnds(string firstText, string secondText)
+    {
+        var response = string.Empty;
+
+        for(var i = 0; i < firstText.Length - secondText.Length + 1; i++)
+        {
+            var substredText = firstText.Substring(i, secondText.Length);
+
+            if(substredText == secondText)
+            {
+                if(i != 0)
+                {
+                    response += firstText[i - 1];
+                }
+                if(i != firstText.Length - secondText.Length)
+                {
+                    response += firstText[i + secondText.Length];
+                }
+            }
+        }
+
+        return response;
+    }
+}
 
 1.	countYZ
 Satr berilgan. Satrda ‘y’ yoki ‘z’ belgisi bilan tugaydigan so’zlar sonini toping. (kata-kichik harf farqi yo’q) Masalan, “heavy” yoki “XYZ” sozlari hisobga olinadi. Sozlar ‘y’ yoki ‘z’ bilan tugaydi deymiz, qachonki shulardan keyin alifbo harifi bolmasa.
 
-countYZ("fez day") → 2
-countYZ("day fez") → 2
-countYZ("day:yak") → 1
-countYZ("!!day--yaz!!") → 2
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+
+        var result = CountYZ(text);
+
+        Console.WriteLine(result);
+    }
+
+    public static int CountYZ(string text)
+    {
+        var additionalChar = ' ';
+        text += additionalChar; 
+        var resultCounter = 0;
+        for (var i = 0; i < text.Length - 1; i++)
+        {
+            if(text[i] == 'y' || text[i] == 'Y' 
+                || text[i] == 'Z' || text[i] == 'z')
+            {
+                if(char.IsLetter(text[i+1]) is false)
+                {
+                    resultCounter++;
+                }
+            }
+        }
+
+        return resultCounter;
+    }
+}
 
 2.	withoutString
 2ta a va b satrlar berilgan. a satrni ichida barcha b satrlari bolsa, olib tashlang va natijani qaytaring.
 
-withoutString("Hello there", "llo") → "He there"
-withoutString("Hello there", "e") → "Hllo thr"
-withoutString("Hello there", "x") → "Hello there"
-withoutString("abyyyab", "yy") → "abyab"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var firstText = Console.ReadLine();
+        var secondText = Console.ReadLine();
+        var result = WithoutString(firstText, secondText);
+        Console.WriteLine($"Result: {result}");
+    }
+
+    public static string WithoutString(string firstText, string secondText)
+    {
+        var result = firstText;
+        while (result.Contains(secondText) is true)
+        {
+            result = result.Remove(result.IndexOf(secondText), secondText.Length);
+        }
+
+        return result;
+    }
+}
 
 3.	equalIsNot
 Satr berilgan. Agar satrda barcha “is” lar soni “not” lar soniga teng bolsa, true qaytaring.
 
-equalIsNot("This is not") → false
-equalIsNot("This is notnot") → true
-equalIsNot("noisxxnotyynotxisi") → true
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = WithoutString(text);
+        Console.WriteLine($"Result: {result}");
+    }
+
+    public static bool WithoutString(string text)
+    {
+        var isCounter = 0;
+        var notCounter = 0;
+        while (text.Contains("is"))
+        {
+            isCounter++;
+            text = text.Remove(text.IndexOf("is"), 2);
+        }
+        while (text.Contains("not"))
+        {
+            notCounter++;
+            text = text.Remove(text.IndexOf("not"), 3);
+        }
+
+        return isCounter == notCounter;
+    }
+}
+
 
 4.	gHappy
 Satr berilgan. Agar satrda ‘g’ dan oldin yoki keyin ‘g’ bolmasa, ‘g’ belgisi yolg’iz deyiladi. Agar satrda yolg’iz ‘g’ uchramasa, true qaytaring.
@@ -1024,46 +1182,206 @@ gHappy("xxgggxyg") → false
 5.	countTriple
 Satr berilgan. Agar 1ta belgi satr ketma-ket 3 marta joylashgan bo’lsa, uchlik deyiladi. Berilgan satrda barcha uchliklar sonini toping va qaytaring. Bunda uchliklar ustma-ust tushishi mumkin.
 
-countTriple("abcXXXabc") → 1
-countTriple("xxxabyyyycd") → 3
-countTriple("a") → 0
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = CountTriple(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static int CountTriple(string text)
+    {
+        var counter = 0;
+        for (var i = 1; i < text.Length - 1; i++)
+        {
+            if (text[i] == text[i-1] && text[i] == text[i+1])
+            {
+                counter++;
+            }
+        }
+
+        return counter;
+    }
+}
 
 6.	sumDigits
 Satr berilgan. Satrda uchragan barcha raqamlar yigindisini toping va qaytaring.
 
-sumDigits("aa1bc2d3") → 6
-sumDigits("aa11b33") → 8
-sumDigits("Chocolate") → 0
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = SumDigits(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static int SumDigits(string text)
+    {
+        var counter = 0;
+        foreach (var character in text)
+        {
+            if (char.IsDigit(character))
+            {
+                counter += character - '0';
+            }
+        }
+
+        return counter;
+    }
+}
 
 7.	sameEnds
 str satr berilgan. str satrni boshida shunday eng uzun a satr topingki, shu a satr str satrning oxirida ham uchrasin. Bunda boshida va oxirida uchragan a satrlar ustma-ust tushmasin. Natijani qaytaring.
 
-sameEnds("abXYab") → "ab"
-sameEnds("yy") → "y"
-sameEnds("zzz") → "z"
-sameEnds("Hello!andHello!") → "Hello!"
-sameEnds("xavaXYZjava") → ""
-sameEnds("ababa") → "a"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = SameEnds(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static string SameEnds(string text)
+    {
+        var result = string.Empty;
+        for (var i = text.Length / 2; i >= 0; i--)
+        {
+            if (text.IndexOf(text.Substring(0, i), text.Length / 2 ) != -1)
+            {
+                result = text.Substring(0, i);
+                break;
+            }
+        }
+
+        return result;
+    }
+}
 
 8.	maxBlock
 Satr berilgan. Satrdagi eng uzun “blok”ning uzunligini toping va qaytaring. “blok” bu satrdagi bir xil belgilar ketma-ketligi.
 
-maxBlock("hoopla") → 2
-maxBlock("abbCCCddBBBxx") → 3
-maxBlock("") → 0
-maxBlock("xyz") → 1
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = MaxBlock(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static int MaxBlock(string text)
+    {
+        var result = 0;
+        var counter = 0;
+        var character = '.';
+        for (var i = 0; i < text.Length - 1; i++)
+        {
+            character = text[i];
+            counter++;
+            while (text[i+1] == character && i < text.Length - 2)
+            {
+                counter++;
+                i++;
+            }
+            if (counter > result)
+            {
+                result = counter;
+            }
+            counter = 0;
+        }
+
+        return result;
+    }
+}
 
 9.	sumNumbers
 Satr berilgan. Satrdagi barcha uchraydigan sonlar yigindisini toping va qaytaring. Son bu raqamlar ketmaketligidir.
 
-sumNumbers("abc123xyz") → 123
-sumNumbers("aa11b33") → 44
-sumNumbers("7 11") → 18
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = SumNumbers(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static int SumNumbers(string text)
+    {
+        var result = 0;
+        var number = 0;
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (char.IsDigit(text[i]) is true)
+            {
+                number = number * 10 + text[i] - '0';
+            }
+            else
+            {
+                result += number;
+                number = 0;
+            }
+        }
+        result += number;
+
+        return result;
+    }
+}
+
 
 10.	notReplace
 Satr berilgan. Satrda uchraydigan barcha “is” satrini “is not” satriga almashtiring, lekin “is” satri alifbo harfi ketidan uchrasa, almashtirmang. Natijani qaytaring.
 
-notReplace("is test") → "is not test"
-notReplace("is-is") → "is not-is not"
-notReplace("This is right") → "This is not right"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = MaxBlock(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static string MaxBlock(string text)
+    {
+        for (var i = 0; i < text.Length - 1; i++)
+        {
+            if (text.Substring(i, 2) == "is")
+            {
+                if (i != 0 && char.IsLetter(text[i-1]) is true)
+                {
+                    continue;
+                }
+                else
+                {
+                    text = text.Insert(i+2, " not");
+                }
+            }
+        }
+
+        return text;
+    }
+}
+
 
