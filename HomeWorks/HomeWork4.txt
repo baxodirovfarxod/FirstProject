@@ -1,0 +1,490 @@
+Oson Vazifalar (10 ta vazifa)
+Stringni Teskariga O'girish
+
+Tavsif: Berilgan stringni teskariga o'girish kerak. Masalan, "salom" stringini o'ngdan chapga o'qiganda "molas" natijani qaytarishi kerak.
+Misol: Kiritish: "salom", Natija: "molas"
+
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = ReverseString(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static string ReverseString(string text)
+    {
+        var result = string.Empty;
+        for (var i = 0; i < text.Length; i++)
+        {
+            result = text[i] + result;
+        }
+
+        return result;
+    }
+}
+
+Unli va Undosh Harflarni Sanash
+
+Tavsif: Berilgan stringda qancha unli va undosh harflar borligini aniqlang. Unli harflar: a, e, i, o, u, boshqa harflar esa undosh hisoblanadi.
+Misol: Kiritish: "salom", Natija: Unlilar: 2, Undoshlar: 3
+
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        CountVowelsAndConsonants(text);
+        Main(texts);
+    }
+
+    public static void CountVowelsAndConsonants(string text)
+    {
+        text = text.ToLower();
+        var vowelCount = 0;
+        var consonantCount = 0;
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (text[i] == 'a' || text[i] == 'e' || text[i] == 'i' || 
+                text[i] == 'o' || text[i] == 'u')
+            {
+                vowelCount++;
+            }
+            else
+            {
+                consonantCount++;
+            }
+        }
+        Console.WriteLine($"Unlilar: {vowelCount}, Undoshlar: {consonantCount}");
+    }
+}
+
+Palindromligini Tekshirish
+
+Tavsif: Berilgan string palindrom ekanligini tekshirish kerak. Agar stringni o'ngdan chapga o'qiganda ham, chapdan o'ngga o'qiganda ham bir xil bo'lsa, u palindrom hisoblanadi.
+Misol: Kiritish: "bob", Natija: true
+
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = IsPalindrome(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static bool IsPalindrome(string text)
+    {
+        var result = string.Empty;
+        for (var i = 0; i < text.Length; i++)
+        {
+            result = text[i] + result;
+        }
+
+        return result == text;
+    }
+}
+
+So'zlar Sonini Sanash
+
+Tavsif: Berilgan gapda qancha so'z borligini hisoblang. So'zlar orasidagi bo'sh joylarga qarab hisoblash mumkin.
+Misol: Kiritish: "Salom dunyo", Natija: 2
+
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = CountWords(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static int CountWords(string text)
+    {
+        text += " ";
+        var result = 0;
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (i != 0 && text[i] == ' ' && text[i-1] != ' ')
+            {
+                result++;
+            }
+        }
+
+        return result;
+    }
+}
+
+Takroriy Harflarni Topish
+
+Tavsif: Berilgan stringda takroriy kelayotgan harflarni toping va ularning sonini sanang.
+Misol: Kiritish: "dasturlash", Natija: 'a': 2, 's': 2
+Bo'sh Joylarni O'chirish
+
+Tavsif: Berilgan string ichidagi barcha bo'sh joylarni olib tashlang.
+Misol: Kiritish: "Salom dunyo", Natija: "Salomdunyo"
+
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = RemoveSpaces(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static string RemoveSpaces(string text)
+    {
+        var result = string.Empty;
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (text[i] == ' ')
+            {
+                continue;
+            }
+            else
+            {
+                result += text[i];
+            }
+        }
+
+        return result;
+    }
+}
+
+Belgini Almashtirish
+
+Tavsif: Berilgan stringda ko'rsatilgan belgi o'rniga boshqa belgini qo'ying.
+Misol: Kiritish: "salom", 'o', 'x', Natija: "salxm"
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var oldChar = Convert.ToChar(Console.ReadLine());
+        var newChar = Convert.ToChar(Console.ReadLine());
+        var result = ReplaceCharacter(text, oldChar, newChar);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static string ReplaceCharacter(string text, char oldChar, char newChar)
+    {
+        var result = string.Empty;
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (text[i] == oldChar)
+            {
+                result += newChar;
+            }
+            else
+            {
+                result += text[i];
+            }
+        }
+
+        return result;
+    }
+}
+
+Uzunligini .Lengthsiz Hisoblash
+
+Tavsif: .Length metodidan foydalanmasdan stringning uzunligini hisoblang.
+Misol: Kiritish: "salom", Natija: 5
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+        var result = GetStringLength(text);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static int GetStringLength(string text)
+    {
+        var result = 0;
+        while (text != string.Empty)
+        {
+            result++;
+            text = text.Remove(0, 1);
+        }
+
+        return result;
+    }
+}
+
+Substring Sonini Aniqlash
+
+Tavsif: Berilgan string ichida belgilangan substring necha marta uchrashishini hisoblang.
+Misol: Kiritish: "banan", "an", Natija: 2
+
+namespace src;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var firstText = Console.ReadLine();
+        var secondText = Console.ReadLine();
+        var result = CountSubstringOccurrences(firstText, secondText);
+        Console.WriteLine($"Result: {result}");
+        Main(texts);
+    }
+
+    public static int CountSubstringOccurrences(string firsText, string secondText)
+    {
+        var result = 0;
+        for (var i = 0; i <= firsText.Length - secondText.Length; i++)
+        {
+            if (firsText.Substring(i, secondText.Length) == secondText)
+            {
+                result++;
+            }
+        }
+
+        return result;
+    }
+}
+
+Katta-Kichik Harflarni O'zgartirish
+
+Tavsif: Har bir belgi katta harf bo'lsa kichikka va kichik harf bo'lsa kattaga o'zgartirilsin.
+Misol: Kiritish: "Salom", Natija: "sALOM"
+
+namespace src
+{
+    internal class Program
+    {
+        static void Main(string[] texts)
+        {
+            var text = Console.ReadLine();
+            var result = ToggleCase(text);
+            Console.WriteLine($"Result: {result}");
+        }
+
+        public static string ToggleCase(string text)
+        {
+            string result = "";
+
+            foreach (var character in text)
+            {
+                if (char.IsUpper(character))
+                {
+                    result += char.ToLower(character);
+                }
+                else
+                {
+                    result += char.ToUpper(character);
+                }
+            }
+
+            return result;
+        }
+    }
+}
+
+O'rtacha Murakkab Vazifalar (5 ta vazifa)
+Anagramligini Tekshirish
+
+Tavsif: Ikkita string berilgan. Ular anagram bo'lsa, bir-biriga mos harflar va bir xil son bilan tashkil topadi. Masalan, "salom" va "lasom" bir xil harflarga ega, lekin tartibi boshqacha.
+Misol: Kiritish: "salom", "lasom", Natija: true
+namespace src
+{
+    internal class Program
+    {
+        static void Main(string[] texts)
+        {
+            var firstText = Console.ReadLine();
+            var secondText = Console.ReadLine();
+            var result = AreAnagrams(firstText, secondText);
+            Console.WriteLine($"Result: {result}");
+        }
+
+        public static bool AreAnagrams(string firstText, string secondText)
+        {
+            var result = true;
+            if (firstText.Length != secondText.Length)
+            {
+                return false;
+            }
+
+            for (var i = 0; i < firstText.Length; i++)
+            {
+                for(var j = 0; j < secondText.Length; j++)
+                {
+                    if (firstText[i] == secondText[j])
+                    {
+                        firstText = firstText.Remove(i, 1);
+                        secondText = secondText.Remove(j, 1);
+                        i--;
+                        break;
+                    }
+                }
+            }
+            if (firstText == "" && secondText == "")
+            {
+                return true;
+            }
+
+            return false;
+        }
+    }
+}
+
+Eng Uzun So'zni Topish
+
+Tavsif: Berilgan gapdagi eng uzun so'zni topish kerak. So'zlar orasidagi bo'sh joylarga qarab ajratiladi.
+Misol: Kiritish: "Juda tez tulki o'rmondan yugurib o'tdi", Natija: "yugurib"
+namespace src
+{
+    internal class Program
+    {
+        static void Main(string[] texts)
+        {
+            var text = Console.ReadLine();
+            var result = FindLongestWord(text);
+            Console.WriteLine($"Result: {result}");
+        }
+
+        public static string FindLongestWord(string text)
+        {
+            var result = string.Empty;
+            var wordLength = 0;
+            var words = text.Split(' ');
+            foreach (string word in words)
+            {
+                wordLength = word.Length;
+                if (wordLength > result.Length)
+                {
+                    result = word;
+                }
+            }
+
+            return result;
+        }
+    }
+}
+
+Belgilarni Tezlik Bo'yicha Tartiblash
+
+Tavsif: Stringdagi harflarni ularning qanchalik tez-tez kelishiga qarab tartiblang. Eng ko'p keladigan harflar birinchi bo'ladi.
+Misol: Kiritish: "dasturlash", Natija: "aasstddurlh"
+Takroriy So'zlarni O'chirish
+
+Tavsif: Berilgan gap ichida takrorlanayotgan so'zlarni olib tashlang. Bu har bir so'zni faqat bir marta qoldiradi.
+Misol: Kiritish: "Bu bu gap ajoyib ajoyib", Natija: "Bu gap ajoyib"
+namespace src
+{
+    internal class Program
+    {
+        static void Main(string[] texts)
+        {
+            var text = Console.ReadLine();
+            var result = RemoveDuplicateWords(text);
+            Console.WriteLine($"Result: {result}");
+        }
+
+        public static string RemoveDuplicateWords(string text)
+        {
+            var result = string.Empty;
+            var words = text.Split(' ');
+            for (var i = 0; i < words.Length; i++)
+            {
+                for (var j = i + 1; j < words.Length; j++)
+                {
+                    if (words[i] == words[j])
+                    {
+                        words[j] = string.Empty;
+                    }
+                }
+            }
+            result = string.Join(' ', words);
+
+            return result;
+        }
+    }
+}
+
+Stringni Siqish
+
+Tavsif: Ketma-ket kelayotgan bir xil belgilarni faqat bir marta yozib, yoniga ularning sonini qo'shing.
+Misol: Kiritish: "aaabbc", Natija: "a3b2c1"
+
+namespace src
+{
+    internal class Program
+    {
+        static void Main(string[] texts)
+        {
+            var text = Console.ReadLine();
+            var result = CompressString(text);
+            Console.WriteLine($"Result: {result}");
+        }
+
+        public static string CompressString(string text)
+        {
+            var result = string.Empty;
+            var character = text[0];
+            var count = 1;
+
+            for (var i = 1; i < text.Length; i++)
+            {
+                if (text[i] == character)
+                {
+                    count++;
+                }
+                else
+                {
+                    result += character + count.ToString();
+                    character = text[i];
+                    count = 1;
+                }
+            }
+            result += character + count.ToString();
+            return result;
+        }
+    }
+}
+
+Murakkab Vazifalar (5 ta vazifa)
+Barcha Permutatsiyalarini Topish
+
+Tavsif: Berilgan string uchun barcha mumkin bo'lgan harf kombinatsiyalarini topish kerak. Har xil tartiblar mavjud bo'ladi.
+Misol: Kiritish: "abc", Natija: "abc", "acb", "bac", "bca", "cab", "cba"
+Eng Uzun Palindromik Substringni Topish
+
+Tavsif: Stringdagi eng uzun palindromik qismni topish kerak. Palindromik qism - o'ngdan chapga va chapdan o'ngga bir xil o'qiladigan qism.
+Misol: Kiritish: "babad", Natija: "bab" yoki "aba"
+Stringni Raqamga Aylantirish
+
+Tavsif: Berilgan stringni raqamga aylantiring, lekin Int32.Parse yoki shu kabi funksiyalardan foydalanmasdan.
+Misol: Kiritish: "123", Natija: 123
+Umumiy Prefiksni Topish
+
+Tavsif: Ikkita string uchun umumiy boshlang'ich prefiksni toping, ya'ni ikkala stringning boshida bir xil ketma-ketlikda keladigan qismni toping.
+Misol: Kiritish: "gulzor", "gullar", Natija: "gul"
+Tenglangan Qavslarni Tekshirish
+
+Tavsif: Berilgan stringdagi qavslar tenglangan yoki tenglanmaganligini tekshiring. Agar ochiq qavslar yopiq qavslarga mos kelmasa, u tenglanmagan hisoblanadi.
+Misol: Kiritish: "((()))", Natija: true
+Misol: Kiritish: "(()", Natija: false
