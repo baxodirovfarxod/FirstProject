@@ -131,6 +131,51 @@ Takroriy Harflarni Topish
 
 Tavsif: Berilgan stringda takroriy kelayotgan harflarni toping va ularning sonini sanang.
 Misol: Kiritish: "dasturlash", Natija: 'a': 2, 's': 2
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        var text = Console.ReadLine();
+
+        DisplayRepeatedChars(text);
+    }
+
+    public static void DisplayRepeatedChars(string text)
+    {
+        // "foundationor"
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (char.IsLetter(text[i]) is false)
+            {
+                continue;
+            }
+            var countOfChar = GetQuantityRepeatedChars(text, text[i]);
+            if (countOfChar <= 1)
+            {
+                continue;
+            }
+            Console.WriteLine($"{text[i]} : {countOfChar}");
+            text = text.Replace(text[i], ' ');
+        }
+    }
+
+    public static int GetQuantityRepeatedChars(string text, char character)
+    {
+        var counter = 0;
+        foreach (var ch in text)
+        {
+            if (character == ch)
+            {
+                counter++;
+            }
+        }
+
+        return counter;
+    }
+}
+
 Bo'sh Joylarni O'chirish
 
 Tavsif: Berilgan string ichidagi barcha bo'sh joylarni olib tashlang.
