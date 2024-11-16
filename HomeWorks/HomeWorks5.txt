@@ -856,14 +856,155 @@ N ta elementdan iborat 1 o‘lchamli list berilgan. Oxirgi elementida katta bo�
 
 20. 
 N ta elementdan iborat 1 o‘lchamli list berilgan. Agar barcha elementni 4 ga yoki 3 ga karrali bo‘lsa "hello" aks holda "salom" ni chiqaring.
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter length : ");
+        var length = int.Parse(Console.ReadLine());
+        var numbers = FillAndGetList(length);
+        var result = "Hello";
+        CheckMultiplesOftreeOrfour(numbers, ref result);
+        Console.WriteLine(result);
+    }
+    public static void CheckMultiplesOftreeOrfour(List<int> numbers, ref string result)
+    {
+        
+        for (var i = 0; i < numbers.Count - 1; i++)
+        {
+            if (numbers[i] % 3 != 0 && numbers[i] % 4 != 0)
+            {
+                result = "salom";
+                break;
+            }
+        }
+    }
+    public static List<int> FillAndGetList(int length)
+    {
+        var digits = new List<int>();
+        for (int i = 0; i < length; i++)
+        {
+            Console.Write($"{i} : ");
+            var number = int.Parse(Console.ReadLine());
+            digits.Add(number);
+        }
+
+        return digits;
+    }
+    public static void DisplayList(List<int> digits)
+    {
+        foreach (var digit in digits)
+        {
+            Console.Write($"{digit} ");
+        }
+        Console.WriteLine();
+    }
+}
+
 
 qiyin
 
 21. 
 N ta elementdan iborat 1 o‘lchamli list berilgan. Agar elementlari o‘suvchi bo‘lsa true aks holda false chiqaring.
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter length : ");
+        var length = int.Parse(Console.ReadLine());
+        var numbers = FillAndGetList(length);
+        var result = true;
+        IsIncreasing(numbers, ref result);
+        Console.WriteLine(result);
+    }
+    public static void IsIncreasing(List<int> numbers, ref bool result)
+    {
+        
+        for (var i = 0; i < numbers.Count - 1; i++)
+        {
+            if (numbers[i] > numbers[i+1])
+            {
+                result = false;
+                break;
+            }
+        }
+    }
+    public static List<int> FillAndGetList(int length)
+    {
+        var digits = new List<int>();
+        for (int i = 0; i < length; i++)
+        {
+            Console.Write($"{i} : ");
+            var number = int.Parse(Console.ReadLine());
+            digits.Add(number);
+        }
+
+        return digits;
+    }
+    public static void DisplayList(List<int> digits)
+    {
+        foreach (var digit in digits)
+        {
+            Console.Write($"{digit} ");
+        }
+        Console.WriteLine();
+    }
+}
+
 
 22. 
 N ta elementdan iborat 1 o‘lchamli list berilgan. Agar elementlari kamayuvchi bo‘lsa true aks holda false chiqaring.
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] texts)
+    {
+        Console.Write("Enter length : ");
+        var length = int.Parse(Console.ReadLine());
+        var numbers = FillAndGetList(length);
+        var result = true;
+        IsDecreasing(numbers, ref result);
+        Console.WriteLine(result);
+    }
+    public static void IsDecreasing(List<int> numbers, ref bool result)
+    {
+        
+        for (var i = 0; i < numbers.Count - 1; i++)
+        {
+            if (numbers[i] < numbers[i+1])
+            {
+                result = false;
+                break;
+            }
+        }
+    }
+    public static List<int> FillAndGetList(int length)
+    {
+        var digits = new List<int>();
+        for (int i = 0; i < length; i++)
+        {
+            Console.Write($"{i} : ");
+            var number = int.Parse(Console.ReadLine());
+            digits.Add(number);
+        }
+
+        return digits;
+    }
+    public static void DisplayList(List<int> digits)
+    {
+        foreach (var digit in digits)
+        {
+            Console.Write($"{digit} ");
+        }
+        Console.WriteLine();
+    }
+}
+
 
 23. 
 N ta elementdan iborat 1 o‘lchamli list berilgan. Eng katta elementi bilan eng kichik elementini joyini almashtiring. Va listni chiqaring.
