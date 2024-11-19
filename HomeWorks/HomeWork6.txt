@@ -1,0 +1,248 @@
+1. 1 o'lchamli massive berilgan. Shu masivedagi eng ko'p qatnashgan elementni
+chiqaruvchi dastur tuzing.
+
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Enter the number of elements: ");
+        var size = int.Parse(Console.ReadLine());
+        var numbers = GetNumbersList(size);
+        var mostFrequentNumber = GetMostFrequentNumber(numbers);
+        Console.WriteLine(mostFrequentNumber);
+    }
+
+    public static int GetMostFrequentNumber(List<int> numbers)
+    {
+        var currentFrequency = 0;
+        var maxFrequency = 0;
+        var mostFrequent = 0;
+
+        for (var i = 0; i < numbers.Count; i++)
+        {
+            var currentNumber = numbers[i];
+            for (var j = 0; j < numbers.Count; j++)
+            {
+                if (currentNumber == numbers[j])
+                {
+                    currentFrequency++;
+                }
+            }
+            if (currentFrequency > maxFrequency)
+            {
+                maxFrequency = currentFrequency;
+                mostFrequent = currentNumber;
+            }
+            currentFrequency = 0;
+        }
+        return mostFrequent;
+    }
+
+    public static List<int> GetNumbersList(int size)
+    {
+        var numbers = new List<int>();
+        for (var i = 0; i < size; i++)
+        {
+            Console.Write($"{i}: ");
+            var number = int.Parse(Console.ReadLine());
+            numbers.Add(number);
+        }
+        return numbers;
+    }
+}
+
+
+2. s satr berilgan. Shu satrdagi faqat harflarni(english) teskari qilib chiqaring. 
+
+test case:
+input : s = "B33__ek"     output : "k33__eB"
+input : s = "He()lLo"     output : "oL()leH"
+
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        var text = Console.ReadLine();
+        var reversedResult = ReverseLettersPreservingPositions(text);
+        Console.WriteLine(reversedResult);
+    }
+
+    public static string ReverseLettersPreservingPositions(string text)
+    {
+        var reversedLetters = string.Empty;
+        var resultText = string.Empty;
+
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (char.IsLetter(text[i]))
+            {
+                reversedLetters = text[i] + reversedLetters;
+            }
+        }
+
+        var letterIndex = 0;
+
+        for (var i = 0; i < text.Length; i++)
+        {
+            if (char.IsLetter(text[i]))
+            {
+                resultText += reversedLetters[letterIndex];
+                letterIndex++;
+            }
+            else
+            {
+                resultText += text[i];
+            }
+        }
+
+        return resultText;
+    }
+}
+
+
+
+3.  So'zlardan tashkil topgan matn berilgan. Oxirgi so'zni uzunligini
+topuvchi dastur tuzing.
+
+test case:
+input : s = "  salom   pdp     "     output : 3
+input : s = "       bekkkk     "     output : 5
+
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        var text = Console.ReadLine();
+        var lastWordLength = GetLastWordLength(text);
+        Console.WriteLine(lastWordLength);
+    }
+
+    public static int GetLastWordLength(string text)
+    {
+        var splitWords = text.Split(" ");
+        var lastWordLength = 0;
+        for (var i = splitWords.Length - 1; i >= 0; i--)
+        {
+            if (splitWords[i] == string.Empty)
+            {
+                continue;
+            }
+            else
+            {
+                lastWordLength = splitWords[i].Length;
+                break;
+            }
+        }
+        return lastWordLength;
+    }
+}
+
+
+4. Butun son berilgan. Agar shu sonni tub bo'luvchilari faqatgina 2,3,5 
+bo'lsa  true aks holda false chiqaruvchi dastur tuzing.
+
+test case:
+input : a = 121          output : false    chunki 121 = 11 * 11 
+input : a = 54           output : true     chunki 54 = 2 * 3 * 3 * 3
+input : a = 42           output : false    chunki 42 = 2 * 3 * 7
+
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        var inputNumber = int.Parse(Console.ReadLine());
+        Console.WriteLine(IsUglyNumber(inputNumber));
+        Main(args);
+    }
+
+    public static bool IsUglyNumber(int number)
+    {
+        while (number % 2 == 0)
+        {
+            number /= 2;
+        }
+        while (number % 3 == 0)
+        {
+            number /= 3;
+        }
+        while (number % 5 == 0)
+        {
+            number /= 5;
+        }
+
+        return number == 1;
+    }
+}
+
+
+5. 1 o'lchamli massive berilgan. Shu massivedagi tub sonlarni boshqa 
+massivega o'sish tartibda jo'ylab bering;
+
+test case :
+input : a[5] = {45, 17, 51, 7, 31 }    output : {7 , 17 , 31} 
+
+namespace g10;
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        var listLength = int.Parse(Console.ReadLine());
+        var inputNumbers = ReadNumbersFromConsole(listLength);
+        var primeNumbers = GetPrimeNumbers(inputNumbers);
+        foreach (var prime in primeNumbers)
+        {
+            Console.Write(prime + " ");
+        }
+    }
+
+    public static List<int> GetPrimeNumbers(List<int> numbers)
+    {
+        var primeList = new List<int>();
+        for (var i = 0; i < numbers.Count; i++)
+        {
+            if (IsPrime(numbers[i]))
+            {
+                primeList.Add(numbers[i]);
+            }
+        }
+        primeList.Sort();
+        return primeList;
+    }
+
+    public static bool IsPrime(int number)
+    {
+        if (number <= 1) return false;
+        for (var i = 2; i < number; i++)
+        {
+            if (number % i == 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static List<int> ReadNumbersFromConsole(int count)
+    {
+        var numbers = new List<int>();
+        for (int i = 0; i < count; i++)
+        {
+            Console.Write($"{i} : ");
+            var number = int.Parse(Console.ReadLine());
+            numbers.Add(number);
+        }
+
+        return numbers;
+    }
+}
+
+
